@@ -1,3 +1,5 @@
 machine==0.0.1
-neopixel==0.0.1
+ adafruit-circuitpython-neopixel
 PyMySQL==1.0.2
+dataclasses
+board

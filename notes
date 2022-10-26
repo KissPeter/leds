@@ -23,3 +23,6 @@ CREATE USER 'query_status'@'%' IDENTIFIED BY '<supersecure pass>'
 
 # Set permission
 GRANT select on weloveapple.budapest_statuses_view to 'query_status'@'%';
+
+>>> from types import SimpleNamespace
+>>> car1 = SimpleNamespace(color="red", mileage=3812.4, automatic

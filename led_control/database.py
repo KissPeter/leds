@@ -31,7 +31,10 @@ class DB:
             try:
                 cursor.execute(sql, args)
             except pymysql.ProgrammingError as e:
-                self.logger.warning(f"Failed to query DB due to {e}\n call was: {sql} with args: {args}", exc_info=True)
+                self.logger.warning(
+                    f"Failed to query DB due to {e}\n call was: {sql} with args: {args}",
+                    exc_info=True,
+                )
             else:
                 self.dbconn.commit()
                 return cursor.fetchall()

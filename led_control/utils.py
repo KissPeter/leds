@@ -2,6 +2,7 @@ import logging
 import os
 import sys
 from logging import Logger
+
 PROJECT = "ROBILEDS"
 
 
@@ -25,4 +26,3 @@ def get_logger(name: str) -> Logger:
     Configure child logger
     """
     return logging.getLogger(PROJECT).getChild(name)
-
