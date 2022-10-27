@@ -1,13 +1,16 @@
 
+SELECT worksheets.id, worksheets.updated_at, worksheets.work_state_id FROM worksheets WHERE worksheets.container = 100
+SELECT * FROM `budapest_statuses_view` where updated_at >= NOW() - INTERVAL 30 DAY order by updated_at DESC
+
 
 CREATE OR REPLACE VIEW budapest_statuses_view as
-SELECT  worksheets.container,work_status.name, work_status.id,worksheets.updated_at
+SELECT worksheets.container,work_status.name, work_status.id,worksheets.updated_at
 FROM worksheets, work_status
 WHERE worksheets.work_state_id = work_status.id
     AND worksheets.container NOT IN ('', 0)
     AND worksheets.service_station = 1
+    AND worksheets.work_state_id in (4, 11)
 
-    AND worksheets.work_state_id = 4
 ORDER BY worksheets.updated_at DESC
 LIMIT 100
 

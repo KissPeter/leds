@@ -11,14 +11,12 @@ from led_control.dataclasses import (
     Colors,
 )
 from led_control.exceptions import BaseValidationException
-from led_control.utils import get_logger
+from led_control.utils import LoggingClass
 
 
-class LEDControl:
-    def __init__(
-        self,
-    ):
-        self.logger = get_logger(self.__class__.__name__)
+class LEDControl(LoggingClass):
+    def __init__(self):
+        super().__init__()
         self.GPIO = os.getenv("GPIO", 5)
         self._init_neopixel()
 

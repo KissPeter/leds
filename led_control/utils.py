@@ -26,3 +26,8 @@ def get_logger(name: str) -> Logger:
     Configure child logger
     """
     return logging.getLogger(PROJECT).getChild(name)
+
+
+class LoggingClass:
+    def __init__(self):
+        self.logger = get_logger(self.__class__.__name__)

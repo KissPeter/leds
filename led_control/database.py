@@ -2,10 +2,10 @@ import pymysql
 from pymysql.cursors import DictCursor
 from typing import Tuple, Union, List, Dict
 
-from led_control.utils import get_logger
+from led_control.utils import LoggingClass
 
 
-class DB:
+class DB(LoggingClass):
     def __init__(self):
         """
         > cat  ~/.my.cnf
@@ -15,6 +15,7 @@ class DB:
         password=alma
         databas=weloveapple
         """
+        super().__init__()
         self.dbconn = pymysql.connect(
             read_default_file="~/.my.cnf",
             connect_timeout=10,
@@ -24,7 +25,6 @@ class DB:
             use_unicode=True,
             cursorclass=DictCursor,
         )
-        self.logger = get_logger(self.__class__.__name__)
 
     def sql(self, sql: str, args: Union[Tuple, List, Dict] = None) -> Tuple:
         with self.dbconn.cursor() as cursor:
