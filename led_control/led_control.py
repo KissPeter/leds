@@ -1,6 +1,13 @@
 import os
 
-import machine
+try:
+    import machine
+
+    machine_loaded = True
+except ModuleNotFoundError:
+    machine_loaded = False
+    print(f"You can't run it on this machine, only on Raspberry, or change code")
+
 import neopixel
 from typing import Union, Tuple
 
@@ -21,9 +28,14 @@ class LEDControl(LoggingClass):
         self._init_neopixel()
 
     def _init_neopixel(self):
-        self.neopixel = neopixel.NeoPixel(
-            machine.Pin(self.GPIO), n=len(contaiener_data), auto_write=True
-        )
+        if machine_loaded:
+            self.neopixel = neopixel.NeoPixel(
+                machine.Pin(self.GPIO), n=len(contaiener_data), auto_write=True
+            )
+        else:
+            self.neopixel = neopixel.NeoPixel(
+                self.GPIO, n=len(contaiener_data), auto_write=True
+            )
 
     def _get_led_id_from_container(self, container: str) -> int:
         _cont_data = contaiener_data.get(container)

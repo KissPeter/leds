@@ -22,7 +22,7 @@ class Colors(BaseDataClass):
 
 DEFAULT_COLOR = Colors.off
 DEFAULT_PIN = os.getenv("GPIO", 5)
-DB_TABLE = os.getenv("DATABASE", "budapest_statuses_view")
+DB_TABLE = os.getenv("DBTABLE", "budapest_statuses_view")
 
 
 @dataclass
