@@ -41,26 +41,47 @@ GRANT select on weloveapple.worksheets to 'query_status'@'%';
 
 ### Ubuntu
 
-*sudo apt-get install python3-pip python3-pyaudio
-*pip3 install -r requirements.txt
+* sudo apt-get install -y python3-pip python3-pyaudio
+* pip3 install -r requirements.txt
 
 ### Raspberry Pi
 
-* sudo pip3 install python3-pip rpi_ws281x adafruit-circuitpython-neopixel
-* pip3 install -r requirements.txt
+* sudo apt-get install -y python3-pip
+* sudo pip3 install rpi_ws281x adafruit-circuitpython-neopixel
+* sudo pip3 install -r requirements.txt
 
 ##  Config
+
+### MySQL connection
+
+You need to create the `.my.cnf` file similar to the example below. This will be used for MySQL connection
+
+```shell
+nano ~/.my.cnf 
+[client]
+host=szerviz.weloveapple.hu
+user=<>
+password=<>
+databas=weloveapple
+```
+You can test it as `mysql` command also uses the very same file, you can install it with the following command:
+
+```shell
+sudo apt-get install -y mysql-common
+```
+
+### Environment variables
 By default `budapest_statuses_view` DB table is used to fetch data.
 It can be overritten by setting the following environment variable
 
 ```shell
-set DBTABLE=<other DB>
+export DBTABLE=<other DB>
 ```
 
-By default it uses the GPIO port `5`. It can be changed like this: 
+By default, it uses the GPIO port `5`. It can be changed like this: 
 
 ```shell
-set GPIO=<other GPIO>
+export GPIO=<other GPIO>
 ```
 
 ##  Run
