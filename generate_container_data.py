@@ -1,6 +1,6 @@
 # Generate container data
 # a1-a50 b1-b50
-from led_control.dataclasses import Container
+from led_control.datastore import Container
 
 cont_data = {}
 led_id = 0

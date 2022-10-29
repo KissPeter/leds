@@ -11,7 +11,7 @@ except ModuleNotFoundError:
 import neopixel
 from typing import Union, Tuple
 
-from led_control.dataclasses import (
+from led_control.datastore import (
     contaiener_data,
     DEFAULT_COLOR,
     status_id_to_color,

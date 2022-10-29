@@ -8,7 +8,7 @@ def main():
     containers = Container()
     containers.init_leds()
     while True:
-        logger.info(f"Sleeping for asecond")
+        logger.info(f"Sleeping for a second")
         containers.query_and_update_states()
         sleep(1)
 
