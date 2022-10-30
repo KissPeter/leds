@@ -31,8 +31,8 @@ class Container(LoggingClass):
         _sql = (
             f"SELECT {DBFields.container},{DBFields.id},{DBFields.updated_at} "
             f"FROM {DB_TABLE} "
-            f"WHERE {DBFields.updated_at} >= %s"
-            f"ORDER BY {DBFields.updated_at}"
+            f"WHERE {DBFields.updated_at} >= %s "
+            f"ORDER BY {DBFields.updated_at} "
             f"DESC LIMIT 1"
         )
         _query_results = self.db.sql(sql=_sql, args=[_results_after])
