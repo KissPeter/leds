@@ -37,7 +37,6 @@ CREATE USER 'query_status'@'%' IDENTIFIED BY '<supersecure pass>'
 ```mysql
 GRANT select on weloveapple.budapest_statuses_view to 'query_status'@'%';
 GRANT select on weloveapple.worksheets to 'query_status'@'%';
-GRANT select on weloveapple.work_status to 'query_status'@'%';
 ```
 
 ## Install
@@ -74,11 +73,12 @@ sudo apt-get install -y mysql-common
 ```
 
 ### Environment variables
-By default `budapest_statuses_view` DB table is used to fetch data.
-It can be overritten by setting the following environment variable
+By default `weloveapple` and `budapest_statuses_view` DB table is used to fetch data.
+It can be overwritten by setting the following environment variable
 
 ```shell
-export DBTABLE=<other DB>
+export DB=<other DB>
+export DBTABLE=<other table>
 ```
 
 By default, it uses the GPIO port `5`. It can be changed like this: 
