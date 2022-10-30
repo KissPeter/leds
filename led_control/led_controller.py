@@ -24,10 +24,10 @@ from led_control.utils import LoggingClass
 class Pin:
 
     def __init__(self, pin):
-        self.pin = pin
+        self.id = pin
 
     def __hash__(self):
-        return self.pin
+        return self.id
 
 
 class LEDControl(LoggingClass):
