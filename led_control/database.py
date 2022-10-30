@@ -3,6 +3,7 @@ from pymysql.cursors import DictCursor
 from typing import Tuple, Union, List, Dict
 
 from led_control.utils import LoggingClass
+from led_control.datastore import DB_TABLE
 
 
 class DB(LoggingClass):
@@ -18,6 +19,7 @@ class DB(LoggingClass):
         super().__init__()
         self.dbconn = pymysql.connect(
             read_default_file="~/.my.cnf",
+            database=DB_TABLE,
             connect_timeout=10,
             read_timeout=10,
             write_timeout=10,
