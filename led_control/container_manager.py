@@ -15,9 +15,10 @@ class Container(LoggingClass):
         """
         Iterate through all containers, select the latest status and set the LED accordingly
         """
-        _sql = f"SELECT work_state_id as id FROM worksheets WHERE container = %s ORDER BY updated_at DESC LIMIT 1"
+        _sql = f"SELECT `work_state_id` as id FROM `worksheets` WHERE LOWER(`container`) = %s " \
+               f"ORDER BY `updated_at` DESC LIMIT 1"
         for container in contaiener_data.keys():
-            _query_result = self.db.sql(sql=_sql, args=[container])
+            _query_result = self.db.sql(sql=_sql, args=[container.lower()])
             if len(_query_result) and _query_result[0].get(DBFields.id):
                 self.led_control.set_status(
                     container=container, status_id=_query_result[0].get(DBFields.id)
@@ -29,7 +30,7 @@ class Container(LoggingClass):
         else:
             _results_after = self.last_update
         _sql = (
-            f"SELECT {DBFields.container},{DBFields.id},{DBFields.updated_at} "
+            f"SELECT LOWER({DBFields.container}),{DBFields.id},{DBFields.updated_at} "
             f"FROM {DB_TABLE} "
             f"WHERE {DBFields.updated_at} >= %s "
             f"ORDER BY {DBFields.updated_at} "
