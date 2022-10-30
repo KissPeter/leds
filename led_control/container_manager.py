@@ -18,9 +18,10 @@ class Container(LoggingClass):
         _sql = f"SELECT work_state_id as id FROM worksheets WHERE container = %s ORDER BY updated_at DESC LIMIT 1"
         for container in contaiener_data.keys():
             _query_result = self.db.sql(sql=_sql, args=[container])
-            self.led_control.set_status(
-                container=container, status_id=_query_result[0].get(DBFields.id)
-            )
+            if len(_query_result) and _query_result[0].get(DBFields.id):
+                self.led_control.set_status(
+                    container=container, status_id=_query_result[0].get(DBFields.id)
+                )
 
     def query_and_update_states(self):
         if not self.last_update:
