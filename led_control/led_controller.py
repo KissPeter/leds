@@ -1,15 +1,8 @@
 import os
-
-try:
-    import machine
-
-    machine_loaded = True
-except ModuleNotFoundError:
-    machine_loaded = False
-    print(f"You can't run it on this machine, only on Raspberry, or change code")
-
-import neopixel
 from typing import Union, Tuple
+
+import board
+import neopixel
 
 from led_control.datastore import (
     contaiener_data,
@@ -21,30 +14,16 @@ from led_control.exceptions import BaseValidationException
 from led_control.utils import LoggingClass
 
 
-class Pin:
-
-    def __init__(self, pin):
-        self.id = pin
-
-    def __hash__(self):
-        return self.id
-
-
 class LEDControl(LoggingClass):
     def __init__(self):
         super().__init__()
-        self.GPIO = os.getenv("GPIO", 5)
+        self.GPIO = os.getenv("GPIO", board.D18)
         self._init_neopixel()
 
     def _init_neopixel(self):
-        if machine_loaded:
-            self.neopixel = neopixel.NeoPixel(
-                machine.Pin(self.GPIO), n=len(contaiener_data), auto_write=True
-            )
-        else:
-            self.neopixel = neopixel.NeoPixel(
-                Pin(self.GPIO), n=len(contaiener_data), auto_write=True
-            )
+        self.neopixel = neopixel.NeoPixel(
+            self.GPIO, n=len(contaiener_data), auto_write=True
+        )
 
     def _get_led_id_from_container(self, container: str) -> int:
         _cont_data = contaiener_data.get(container)

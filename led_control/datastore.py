@@ -1,5 +1,6 @@
 import os
 from typing import Tuple
+import board
 
 from dataclasses import dataclass
 
@@ -21,7 +22,7 @@ class Colors(BaseDataClass):
 
 
 DEFAULT_COLOR = Colors.off
-DEFAULT_PIN = os.getenv("GPIO", 5)
+DEFAULT_PIN = os.getenv("GPIO", board.D18)
 DB_TABLE = os.getenv("DBTABLE", "budapest_statuses_view")
 
 

@@ -81,7 +81,7 @@ export DB=<other DB>
 export DBTABLE=<other table>
 ```
 
-By default, it uses the GPIO port `5`. It can be changed like this: 
+By default, it uses the pin 18 / GPIO port 18. It can be changed like this: 
 
 ```shell
 export GPIO=<other GPIO>
