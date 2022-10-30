@@ -37,6 +37,7 @@ CREATE USER 'query_status'@'%' IDENTIFIED BY '<supersecure pass>'
 ```mysql
 GRANT select on weloveapple.budapest_statuses_view to 'query_status'@'%';
 GRANT select on weloveapple.worksheets to 'query_status'@'%';
+GRANT select on weloveapple.work_status to 'query_status'@'%';
 ```
 
 ## Install
