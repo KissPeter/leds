@@ -69,7 +69,7 @@ class LEDControl(LoggingClass):
         if container not in contaiener_data.keys():
             raise BaseValidationException(f"unknown container: {container}")
         self._check_set_gpio(container=container)
-        _led_id = self._get_led_id_from_container()
+        _led_id = self._get_led_id_from_container(container=container)
         _color = self._get_color_from_status_id(status_id)
         self.logger.info(f"Set {container} (LED: {_led_id}) to {_color}")
         self.neopixel[_led_id] = _color
