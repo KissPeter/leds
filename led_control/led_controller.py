@@ -21,6 +21,15 @@ from led_control.exceptions import BaseValidationException
 from led_control.utils import LoggingClass
 
 
+class Pin:
+
+    def __init__(self, pin):
+        self.pin = pin
+
+    def __hash__(self):
+        return self.pin
+
+
 class LEDControl(LoggingClass):
     def __init__(self):
         super().__init__()
@@ -34,7 +43,7 @@ class LEDControl(LoggingClass):
             )
         else:
             self.neopixel = neopixel.NeoPixel(
-                self.GPIO, n=len(contaiener_data), auto_write=True
+                Pin(self.GPIO), n=len(contaiener_data), auto_write=True
             )
 
     def _get_led_id_from_container(self, container: str) -> int:
