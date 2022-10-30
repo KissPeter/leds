@@ -1,7 +1,7 @@
 import os
 from typing import Tuple
 import board
-
+from adafruit_blinka.board.raspberrypi.raspi_40pin import D18
 from dataclasses import dataclass
 
 
@@ -22,7 +22,11 @@ class Colors(BaseDataClass):
 
 
 DEFAULT_COLOR = Colors.off
-DEFAULT_PIN = os.getenv("GPIO", board.D18)
+try:
+    DEFAULT_PIN = os.getenv("GPIO", D18)
+except AttributeError as e:
+    print(f"No such pin: {e}.  {board.board_id}")
+
 DB_TABLE = os.getenv("DBTABLE", "budapest_statuses_view")
 
 

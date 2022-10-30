@@ -2,6 +2,8 @@ import os
 from typing import Union, Tuple
 
 import board
+from adafruit_blinka.board.raspberrypi.raspi_40pin import D18
+
 import neopixel
 
 from led_control.datastore import (
@@ -17,7 +19,7 @@ from led_control.utils import LoggingClass
 class LEDControl(LoggingClass):
     def __init__(self):
         super().__init__()
-        self.GPIO = os.getenv("GPIO", board.D18)
+        self.GPIO = os.getenv("GPIO", D18)
         self._init_neopixel()
 
     def _init_neopixel(self):
