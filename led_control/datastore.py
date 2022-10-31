@@ -16,8 +16,8 @@ class BaseDataClass:
 @dataclass
 class Colors(BaseDataClass):
     red: Tuple = (255, 0, 0)
-    blue: Tuple = (0, 255, 0)
-    green: Tuple = (0, 0, 255)
+    green: Tuple = (0, 255, 0)
+    blue: Tuple = (0, 0, 255)
     off: Tuple = (0, 0, 0)
 
 
