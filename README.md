@@ -35,8 +35,8 @@ CREATE USER 'query_status'@'%' IDENTIFIED BY '<supersecure pass>'
 ```
 * Grant permission
 ```mysql
-GRANT select on weloveapple.budapest_statuses_view to 'query_status'@'%';
-GRANT select on weloveapple.worksheets to 'query_status'@'%';
+GRANT select on <>.budapest_statuses_view to 'query_status'@'%';
+GRANT select on <>.worksheets to 'query_status'@'%';
 ```
 
 ## Install
@@ -61,10 +61,10 @@ You need to create the `.my.cnf` file similar to the example below. This will be
 ```shell
 nano ~/.my.cnf 
 [client]
-host=szerviz.weloveapple.hu
+host=<>
 user=<>
 password=<>
-databas=weloveapple
+database=<>
 ```
 You can test it as `mysql` command also uses the very same file, you can install it with the following command:
 
@@ -73,7 +73,7 @@ sudo apt-get install -y mysql-common
 ```
 
 ### Environment variables
-By default `weloveapple` and `budapest_statuses_view` DB table is used to fetch data.
+By default `<>` and `budapest_statuses_view` DB table is used to fetch data.
 It can be overwritten by setting the following environment variable
 
 ```shell
