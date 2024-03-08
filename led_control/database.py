@@ -12,15 +12,15 @@ class DB(LoggingClass):
         """
         > cat  ~/.my.cnf
         [client]
-        host=szerviz.weloveapple.hu
-        user=weloveapple
-        password=alma
-        databas=weloveapple
+        host=szerviz.<>.hu
+        user=<>
+        password=<>
+        databas=<>
         """
         super().__init__()
         self.dbconn = pymysql.connect(
             read_default_file="~/.my.cnf",
-            database=os.getenv("DB", "weloveapple"),
+            database=os.getenv("DB", "<>"),
             connect_timeout=10,
             read_timeout=10,
             write_timeout=10,
